@@ -1,8 +1,8 @@
 package binarySearchTree;
 
 public interface DataControl {
-	public void insert(int key);
-	public void delete();
-	public void search();
-	public void update();
+	public void insert(Node insertNode);
+	public void delete(int deleteKey);
+	public boolean search(int searchKey);
+	public void display();
 }
