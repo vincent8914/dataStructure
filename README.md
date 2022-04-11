@@ -1,4 +1,4 @@
-## dataStructure： 資料結構練習
+## dataStructure：資料結構練習
 
 <div>
 <h3> 二元搜尋樹 </h3>
