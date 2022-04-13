@@ -47,17 +47,16 @@ public class BinarySearchTree implements DataControl {
 				} else { // т璶埃key
 					if (currentRoot.left == null && currentRoot.right == null) {
 						currentRoot = null;
-						// 盢璶埃noderoot睲埃夹
-						if (isLeft) {
+						if(isLeft) {
 							preNode.left = null;
-						} else {
+						}else {
 							preNode.right = null;
 						}
 						return;
 					} else if (currentRoot.right != null) { // тノㄓnode
-						currentRoot.key = successor(currentRoot, preNode);
+						currentRoot.key = successor(currentRoot);
 					} else {
-						currentRoot.key = predecessor(currentRoot, preNode);
+						currentRoot.key = predecessor(currentRoot);
 					}
 					return;
 				}
@@ -66,38 +65,25 @@ public class BinarySearchTree implements DataControl {
 		}
 	}
 
-	private int successor(Node currentRoot, Node preNode) { // .right.程(left程┏)
-		preNode = currentRoot;
+	private int successor(Node currentRoot) {// right.程
+		Node preNode = currentRoot;
 		currentRoot = currentRoot.right;
-		boolean isLeft = false;
 		while (currentRoot.left != null) {
-			isLeft = true;
 			preNode = currentRoot;
 			currentRoot = currentRoot.left;
 		}
-		if (isLeft) { // 程тnode琌leftウroot礚斗钡ヴ狥﹁
-			preNode.left = null;
-		} else { // 程тnode琌root(┏礚left)ウroot惠钡ウright
-			preNode.right = currentRoot.right;
-		}
+		preNode.left = currentRoot.right;
 		return currentRoot.key;
 	}
 
-	private int predecessor(Node currentRoot, Node preNode) { // .left.程(right程┏)
-		preNode = currentRoot;
+	private int predecessor(Node currentRoot) {// left.程
+		Node preNode = currentRoot;
 		currentRoot = currentRoot.left;
-		boolean isRight = false;
 		while (currentRoot.right != null) {
-			isRight = true;
 			preNode = currentRoot;
 			currentRoot = currentRoot.right;
 		}
-		if (isRight) {
-			preNode.right = null;
-		} else {
-			preNode.left = currentRoot.left;
-		}
-		preNode.left = currentRoot.left;
+		preNode.left = currentRoot.right;
 		return currentRoot.key;
 	}
 
@@ -124,10 +110,6 @@ public class BinarySearchTree implements DataControl {
 		inOrder(root);
 		System.out.print("\nPreorder");
 		preOrder(root);
-		System.out.print("\nPostorder");
-		postOrder(root);
-//		System.out.println("\nBFS");
-//		BFS(root);
 		System.out.println();
 	}
 
@@ -146,17 +128,5 @@ public class BinarySearchTree implements DataControl {
 			preOrder(root.right);
 		}
 	}
-
-	private void postOrder(Node root) {
-		if (root != null) {
-			postOrder(root.left);
-			postOrder(root.right);
-			System.out.print("[" + root.key + "]");
-		}
-	}
-
-//	private void BFS(Node root) {
-//
-//	}
 
 }
