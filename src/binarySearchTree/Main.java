@@ -7,6 +7,7 @@ public class Main {
 	public static void main(String[] args) {
 		BinarySearchTree bts = new BinarySearchTree();
 		Scanner input = new Scanner(System.in);
+		
 		try {
 			int i = input.nextInt();
 
